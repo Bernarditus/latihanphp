@@ -9,7 +9,7 @@ $hasil = mysqli_query($koneksi, $query);
 
 <h1>Data Mahasiswa</h1>
 <a href="template.php?page=formmahasiswa&action=add">Tambah Data</a>
-<table>
+<table border="1">
 <thead>
 	<tr>
 		<th>No.</th>
