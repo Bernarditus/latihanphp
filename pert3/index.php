@@ -1,5 +1,10 @@
 <?php // filename: index.php
+// 1. Koneksi
+include("koneksi.php");
 
+// 2. Query
+$query = "SELECT * FROM kontak";
+$hasil = mysqli_query($db, $query);
 ?>
 
 <!DOCTYPE html>
@@ -46,17 +51,24 @@
 			</tr>
 		</thead>
 		<tbody>
+		<?php
+		$i=0;
+		while($row = mysqli_fetch_assoc($hasil)){
+			?>
 			<tr>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
+				<td><?php echo $row['id']; ?></td>
+				<td><?php echo $row['nama']; ?></td>
+				<td><?php echo $row['phone']; ?></td>
+				<td><?php echo $row['email']; ?></td>
+				<td><?php echo $row['kategori_id']; ?></td>
 				<td>
-					<a href="">Edit</a> | 
-					<a href="">Delete</a>
+					<a href="form_edit_kontak.php?id=<?php echo $row['id']; ?>">Edit</a>  
+					<a href="delete_edit_kontak.php?id=<?php echo $row['id']; ?>">Delete</a>
 				</td>
 			</tr>
+			<?php
+			}
+			?>
 		</tbody>
 	</table>
 </div>
