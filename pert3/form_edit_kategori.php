@@ -1,14 +1,16 @@
 <?php // filename: form_edit_kategori.php
-include("koneksi.php");
-
-$id = $_GET['id'];
-
-$query = "SELECT * FROM kategori
-		WHERE id=$id";
-$hasil = mysqli_query($db, $query);
-
-$row = mysqli_fetch_assoc($hasil);
-
+	//koneksi
+	include("koneksi.php");
+	
+	$id = $_GET['id'];
+	
+	//query
+	$query = "SELECT * FROM kategori
+			  WHERE id=$id";
+	$hasil = mysqli_query($db, $query);
+	
+	//tampil
+	$row = mysqli_fetch_assoc($hasil);
 ?>
 
 <!DOCTYPE html>

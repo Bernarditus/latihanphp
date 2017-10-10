@@ -1,11 +1,10 @@
 <?php //filename: delete_kategori.php
-// 1. Koneksi
-include("koneksi.php");
+//1. koneksi
+include ("koneksi.php");
 
-$id = $_GET['id'];
 
+// 2. Query
 $query = "DELETE FROM kategori WHERE id=$_GET[id]";
-			
 mysqli_query($db, $query);
 
 header('Location: kategori.php');

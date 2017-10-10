@@ -1,11 +1,11 @@
 <?php // filename: index.php
+
 // 1. koneksi
 include("koneksi.php");
 
 // 2. query
 $query = "SELECT * FROM kontak";
 $hasil = mysqli_query($db, $query);
-
 ?>
 
 <!DOCTYPE html>
@@ -21,25 +21,9 @@ $hasil = mysqli_query($db, $query);
 		<li><a href="kategori.php">Kategori</a></li>
 	</ul>
 </div>
-<div id="filter">
-	<b>Filter berdasarkan kategori: </b>
-	<form action="" method="post">
-		<select name="">
-			<option value=""></option>
-		</select>
-		<input type="submit" name="filter" value="Filter" />
-	</form>
-</div>
-<div id="search">
-	<b>Search: </b>
-	<form action="" method="post">
-		<input type="text" name="search_text" />
-		<input type="submit" name="cari" value="Cari" />
-	</form>
-</div>
 <div id="konten">
-	<h2>Kontak</h2>
-	<a href="form_tambah_kontak.php">Tambah Kontak</a>
+	<h2>Kategori</h2>
+	<a href="form_tambah_kontak.php">Tambah Kategori</a>
 	<table border="1">
 		<thead>
 			<tr>
@@ -74,5 +58,4 @@ $hasil = mysqli_query($db, $query);
 		</tbody>
 	</table>
 </div>
-</body>
 </html>
