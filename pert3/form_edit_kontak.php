@@ -1,4 +1,16 @@
 <?php // filename: form_edit_kontak.php
+//koneksi
+	include("koneksi.php");
+	
+	$id = $_GET['id'];
+	
+	//query
+	$query = "SELECT * FROM kontak
+			  WHERE id=$id";
+	$hasil = mysqli_query($db, $query);
+	
+	//tampil
+	$row = mysqli_fetch_assoc($hasil);
 
 ?>
 
@@ -17,15 +29,15 @@
 </div>
 <div id="konten">
 	<h2>Edit Kontak</h2>
-	<form action="" method="post">
+	<form action="proses_edit_kontak.php" method="post">
 		Nama:
-		<input type="text" name="nama" />
+		<input type="text" value="<?php echo $row['nama']; ?>" name="nama" />
 		<br />
 		Phone:
-		<input type="text" name="phone" />
+		<input type="text" value="<?php echo $row['phone'];?>"name="phone" />
 		<br />
 		Email:
-		<input type="text" name="email" />
+		<input type="text" value="<?php echo $row['email'];?>"name="email" />
 		<br />
 		Kategori:
 		<select name="kategori">

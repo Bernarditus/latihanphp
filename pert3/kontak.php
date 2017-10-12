@@ -41,6 +41,7 @@ $hasil = mysqli_query($db, $query);
 					
 			?>
 			<tr>
+				<td><?php echo $i; ?></td>
 				<td><?php echo $row['id']; ?></td>
 				<td><?php echo $row['nama']; ?></td>
 				<td><?php echo $row['phone']; ?></td>
