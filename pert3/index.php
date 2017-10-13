@@ -3,15 +3,27 @@
 include("koneksi.php");
 
 // 2. query
-$query = "SELECT * FROM kontak";
+$query = "SELECT * FROM kontak
+			INNER JOIN kategori
+			ON kontak.kategori_id = kategori.id";
 $hasil = mysqli_query($db, $query);
-
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
 	<title>Phone Book</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" 
+	integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" 
+	crossorigin="anonymous">
+	<style>
+		#tbody{background:#000000;}
+		#menu{background:#CCCCFF;}
+		#konten{background:#CCCC33;}
+		#filter{background:#33FFCC;}
+		#search{background:#33FFCC;}
+		#footer{background:cyan;}
+	</style>
 </head>
 <body>
 <h1>Phone Book</h1>
@@ -53,9 +65,10 @@ $hasil = mysqli_query($db, $query);
 		</thead>
 		<tbody>
 			<?php
-			while($row = mysqli_fetch_assoc($hasil)){
-					
-			?>
+			$i = 0;
+		while ($row = mysqli_fetch_assoc($hasil)){
+			$i++;
+		?>
 			<tr>
 				<td><?php echo $row['id']; ?></td>
 				<td><?php echo $row['nama']; ?></td>
@@ -63,14 +76,13 @@ $hasil = mysqli_query($db, $query);
 				<td><?php echo $row['email']; ?></td>
 				<td><?php echo $row['kategori_id']; ?></td>
 				<td>
-					<a href="form_edit_kontak.php?id=<?php echo $row['id'];?>">Edit</a> | 
+				<a href="form_edit_kontak.php?id=<?php echo $row['id'];?>">Edit</a> | 
 					<a href="delete_kontak.php?id=<?php echo $row['id'];?>">Delete</a>
 				</td>
-			
 			</tr>
-			<?php
-			}
-			?>
+		<?php
+		}
+		?>
 		</tbody>
 	</table>
 </div>

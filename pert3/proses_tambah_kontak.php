@@ -1,13 +1,11 @@
-<?php //filename:proses_tambah_kategori.php
-
-// 1. Koneksi
+<?php
 include("koneksi.php");
-
-// 2. Query
-// Data dari form
-$ket = mysqli_real_escape_string($db, $_POST['ket']);
-$query = "INSERT INTO kontak (nama,phone,email) VALUES ('$_POST[nama]','$_POST[phone]','$_POST[email]')";
-
+$nama = mysqli_real_escape_string($db, $_POST['nama']);
+$phone = mysqli_real_escape_string($db, $_POST['phone']);
+$email = mysqli_real_escape_string($db, $_POST['email']);
+$kategori = mysqli_real_escape_string($db, $_POST['kategori']);
+$query = "INSERT INTO kontak (nama, phone, email, kategori_id) VALUES ('$_POST[nama]','$_POST[phone]','$_POST[email]','$_POST[kategori]')";
+ 
 mysqli_query($db,$query);
-
 header('Location: index.php');
+?>

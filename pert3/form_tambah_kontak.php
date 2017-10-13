@@ -6,6 +6,17 @@
 <html>
 <head>
 	<title>Phone Book</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" 
+	integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" 
+	crossorigin="anonymous">
+	<style>
+		#tbody{background:#000000;}
+		#menu{background:#CCCCFF;}
+		#konten{background:#CCCC33;}
+		#filter{background:#33FFCC;}
+		#search{background:#33FFCC;}
+		#footer{background:cyan;}
+	</style>
 </head>
 <body>
 <h1>Phone Book</h1>
@@ -18,6 +29,7 @@
 <div id="konten">
 	<h2>Tambah Kontak</h2>
 	<form action="proses_tambah_kontak.php" method="post">
+	<tbody>
 		Nama:
 		<input type="text" name="nama" />
 		<br />
@@ -29,11 +41,20 @@
 		<br />
 		Kategori:
 		<select name="kategori">
-			<option value=""></option>
+			<?php
+		include("koneksi.php");
+		$db = mysqli_connect("localhost", "root", "", "kalbis_web");
+		$query = "select * from kategori";
+		$hasil = mysqli_query($db,$query);
+		while($data=mysqli_fetch_array($hasil)){
+			echo "<option value=$data[id]>$data[keterangan]</option>";
+			}
+		?>
 		</select>
 		<br />
 		<input type="submit" value="Simpan" />
 	</form>
+	</tbody>
 </div>
 </body>
 </html>
