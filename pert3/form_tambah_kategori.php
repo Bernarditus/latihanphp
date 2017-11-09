@@ -17,9 +17,12 @@
 </div>
 <div id="konten">
 	<h2>Tambah Kategori</h2>
-	<form action="proses_tambah_kategori.php" method="post">
+	<form action="proses_tambah_kategori.php" method="post" enctype="multipart/form-data">
 		Keterangan:
 		<input type="text" name="ket" />
+		<br/>
+		Icon :
+		<input type="file" name="gambar" />
 		<br />
 		<input type="submit" value="Simpan" />
 	</form>

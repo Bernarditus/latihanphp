@@ -1,9 +1,7 @@
 <?php // filename: form_edit_kontak.php
-//koneksi
-	include("koneksi.php");
+	include"koneksi.php";
 	
 	$id = $_GET['id'];
-	
 	//query
 	$query = "SELECT * FROM kontak
 			  WHERE id=$id";
@@ -11,24 +9,16 @@
 	
 	//tampil
 	$row = mysqli_fetch_assoc($hasil);
-
 ?>
+
 
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Phone Book</title>
+	<title>Data Mahasiswa Kalbis</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" 
 	integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" 
 	crossorigin="anonymous">
-	<style>
-		#tbody{background:#000000;}
-		#menu{background:#CCCCFF;}
-		#konten{background:#CCCC33;}
-		#filter{background:#33FFCC;}
-		#search{background:#33FFCC;}
-		#footer{background:cyan;}
-	</style>
 </head>
 <body>
 <h1>Phone Book</h1>
@@ -41,24 +31,28 @@
 <div id="konten">
 	<h2>Edit Kontak</h2>
 	<form action="proses_edit_kontak.php" method="post">
+	
 	<tbody>
 		Nama:
-		<input type="text" value="<?php echo $row['nama']; ?>" name="nama" />
+		
+		<input type="text" value="<?php echo $row['nama']; ?>"name="nama" />
 		<br />
 		Phone:
-		<input type="text" value="<?php echo $row['phone'];?>"name="phone" />
+		<input type="text" value="<?php echo $row['phone']; ?>"name="phone" />
 		<br />
 		Email:
-		<input type="text" value="<?php echo $row['email'];?>"name="email" />
+		<input type="text" value="<?php echo $row['email']; ?>"name="email" />
 		<br />
+	
 		Kategori:
-		<select name="kategori">
-			<?php
-		$db = mysqli_connect("localhost", "root", "", "kalbis_web");
+		<select name="kategori"  />
+		<?php
+		$db = mysqli_connect("localhost","root", "", "kalbis_web");
 		$query = "select * from kategori";
 		$hasil = mysqli_query($db,$query);
 		while($data=mysqli_fetch_array($hasil)){
-			echo "<option value=$data[id]>$data[keterangan]</option>";
+		echo "<option value=$data[id]>$data[keterangan]</option>";
+		
 		}
 		?>
 		</select>

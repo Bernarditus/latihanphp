@@ -27,6 +27,7 @@
 		<thead>
 			<tr>
 				<th>No.</th>
+				<th>Icon</th>
 				<th>Keterangan</th>
 				<th>Action</th>
 			</tr>
@@ -39,6 +40,7 @@
 			?>
 			<tr>
 				<td><?php echo $i; ?></td>
+				<td></td>
 				<td><?php echo $row['keterangan']; ?></td>
 				<td>
 					<a href="">View Kontak</a> |					
